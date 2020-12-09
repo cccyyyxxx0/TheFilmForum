@@ -48,9 +48,15 @@ public class UserServlet extends BaseServlet {
         String repassword=request.getParameter("repassword");
         String email=request.getParameter("email");
         String phone=request.getParameter("phone");
+        User user=new User();
         if (password.equals(repassword)){
-            int result=userService.insert(new User(username,password,phone,email));
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setPhone(phone);
         }
+        int result=userService.insert(user);
+
     }
 
 
@@ -75,5 +81,10 @@ public class UserServlet extends BaseServlet {
 //
 //        }
 
+    }
+
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().invalidate();
+        response.sendRedirect("");
     }
 }

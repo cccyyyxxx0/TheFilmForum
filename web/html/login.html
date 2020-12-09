@@ -1,123 +1,64 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta charset="utf-8" />
-    <title></title>    
-    <meta property="qc:admins" content="163162434151116711456375747716257" />   
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>大气html会员手机登录模板 - </title>    
-    <link rel="stylesheet" type="text/css" href="../static/css/yft-base.css" />
-    <script type="text/javascript" src="../static/js/jquery-1.8.2.min.js"></script>
-    <!-- 新增登录 -->
-    <link rel="stylesheet" type="text/css" href="../static/css/login.css" />
-    <script type="text/javascript" src="../static/js/login.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form by Tooplate</title>
+	
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/materialize.min.css">
+    <link rel="stylesheet" href="../static/css/tooplate.css">
 </head>
 
-<body>
-     <div class="UnauthHomePage">
-        <div class="register_shadow">
-            <div class="register_shadow_txt"></div>
-        </div>
-    </div>
-    <div class="login_containter">
-        <div class="login_left">
-            <a class="logo" href="http:///"></a>
-            <h3><span>登&nbsp;录</span></h3>
-            <h4 class="account_login"><a href="javascript:void(0)">手机动态登录<span></span></a></h4>
-            <h4 class="phone_login" style="display:none;"><a href="javascript:void(0)">返回账号登录</a></h4>
-            <div class="login_validate loginAccunt_validate">
-                <div class="input_item">
-                    <i class="icon_un"></i>
-                    <input type="text" name="username" value="请输入手机/邮箱/用户名" eg="请输入手机/邮箱/用户名" class="loginName" />
-                    <span class="error_info errorloginName" style="display:none;"></span>
-                </div>
-                <div class="input_item">
-                    <i class="icon_pw"></i>
-                    <span class="password_upTxt">请输入密码</span>
-                    <input type="password" name="password" class="loginPwd" />
-                    <span class="error_info errorloginPwd" style="display:none;"></span>
-                </div>
-                <div class="input_item input_item_yzm" style="display:none;">
-                    <div class="icon_yzm_item">
-                        <i class="icon_yzm"></i>
-                        <input type="text" name="yanzhengma" class="loginyzm" maxlength="4" value="验证码" eg="验证码" id="loginyzm" onblur="onblursLoginYzm($(this))" />
+<body id="login">
+    <div class="container">
+        <div class="row tm-register-row tm-mb-35">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-login-l">
+                <form action="../user.do" method="post" class="tm-bg-black p-5 h-100">
+                    <input name="action" value="login" type="hidden">
+                    <div class="input-field">
+                        <input placeholder="用户名" id="username" name="username" type="text" class="validate">
                     </div>
-                    <div class="yzm_H_item">
-                        <a onclick="changVCode()" class="yzm_H">换</a><img onclick="" id="" class="loginCapt" src="images/GetValidateCode.jpg" />
-                        <span class="errorloginyzm error_info" style="display:none;"></span>
+                    <div class="input-field mb-5">
+                        <input placeholder="密码" id="password" name="password" type="password" class="validate">
+                    </div>
+                    <div class="tm-flex-lr">
+                        <a href="#" class="white-text small">忘记密码?</a>
+                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">登 录</button>
                     </div>
 
-                </div>
-                <div class="input_item">
-                    <input type="checkbox" name="autologin" value="ON" class="loginCheck" id="autologin" checked="checked" style="display: none" /><i class="loginChk checked" name="loginChk"></i><span class="autoTxt">7天自动登录</span>
-                    <a href="javascript:;" class="login_wjmm">忘记密码?</a>
-                </div>
-                <div class="input_item">
-                    <input type="button" class="loginBtn" onmousedown="LoginFormSubmit($(this));" value="登  录" />
-                </div>
-                <div class="input_item f-tac f-pb30">
-                    <a href="javascript:void(0)" class="iconQQ" onclick="openQQ();"></a>
-                    <a href="javascript:void(0)" class="iconWX" onclick="openWeiXin();"></a>
-                    <a href="javascript:void(0)" class="iconWB" onclick="openWeiBo();"></a>
-                    <a href="javascript:void(0)" class="iconZFB" onclick="openAliPay();"></a>
-                </div>
+                </form>
             </div>
-            <div class="login_validate loginPhone_validate" style="display:none;">
-                <div class="input_item">
-                    <i class="icon_un"></i>
-                    <input type="text" name="Loginphone" value="请输入手机号" eg="请输入手机号" class="loginPhone" maxlength="11" onblur="onblursLoginPhone($(this))" />
-                    <span class="error_info errorloginPhone" style="display:none;"></span>
-                </div>
-                <div class="input_item" >
-                    <div class="icon_yzm_item">
-                        <i class="icon_yzm"></i>
-                        <input type="text" name="yanzhengma" class="loginyzm" maxlength="4" value="验证码" eg="验证码" id="loginyzmPhone"   />
-                    </div>
-                    <div class="yzm_H_item">
-                        <a onclick="changVCodePhone()" class="yzm_H">换</a><img id="" class="loginCapt" src="images/GetValidateCode.jpg" />
-                        <span class="errorloginyzm error_info" style="display:none;"></span>
-                    </div>
-
-                </div>
-                <div class="input_item">
-                    <div class="icon_dx_item">
-                        <i class="icon_dx"></i>
-                        <input type="text" name="identCode" class="loginCode" value="请输入验证码" eg="请输入验证码" />
-                    </div>
-                    <div class="login_sendCode">
-                        <input type="button" name="getYzm"  value="发送短信验证码" />
-                    </div>
-                    <span class="error_info errorloginCode" style="display:none;"></span>
-                </div>
-                <div class="input_item">
-                    <span class="readTxt">阅读并接受<a href="javascript:;" target="_blank" class="color2">《一幅图用户协议》</a></span>
-
-                </div>
-                <div class="input_item">
-                    <span class="Login_Uname" style="display:none;">您的手机号码尚未注册，点击注册将自动注册一幅图账号并与此手机号绑定</span>
-                    <input type="button" class="PhoneloginBtn" onmousedown="LoginPhoneSubmit($(this));" value="登  录" />
-                    <input type="button" style="display:none;" class="PhoneRegBtn" onmousedown="RegPhoneSubmit($(this));" value="注  册" />
-                </div>
-                <div class="input_item f-tac f-pb30">
-                    <a href="javascript:void(0)" class="iconQQ"></a><a href="javascript:void(0)" class="iconWX"></a><a href="javascript:void(0)" class="iconWB"></a><a href="javascript:void(0)" class="iconZFB"></a>
-                </div>
-            </div>
-            <div class="login_change">
-                <p>还没有一幅图账号？</p>
-                <a href="javascript:void(0)">注  册</a>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-login-r">
+                <header class="font-weight-light tm-bg-black p-5 h-100">
+                    <h3 class="mt-0 text-white font-weight-light">Your Login</h3>
+                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                    <p class="mb-0">Vestibulum neque neque, porttitor quis lacinia eu, iaculis id dui. Mauris quis velit lectus.</p>
+                </header>
             </div>
         </div>
-        <div class="login_right">
-            
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ml-auto mr-0 text-center">
+                <a href="signup.html" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">创建一个新账号</a>
+            </div>
         </div>
-
+        <footer class="row tm-mt-big mb-3">
+            <div class="col-xl-12 text-center">
+                   
+            </div>
+        </footer>
     </div>
 
-
-
+    <script src="../js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
 </body>
 
 </html>
-
-
