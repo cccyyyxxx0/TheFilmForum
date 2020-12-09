@@ -33,6 +33,13 @@ public class User {
                 '}';
     }
 
+    public User(String username, String password, String phone, String email) {
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
