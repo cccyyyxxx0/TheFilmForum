@@ -18,13 +18,13 @@ public interface CommentDao {
 
     int updateById(Comment comment);
 
-    Admin queryCommentById(Integer id);
+    Comment queryCommentById(Integer id);
 
-    List<Admin> queryAll();
+    List<Comment> queryAll();
 
     //查询总条数
     Integer queryTotalCount();
 
     //分页查询
-    List<Admin> queryCommentByPage(Integer begin,Integer pageSize);
+    List<Comment> queryCommentByPage(Integer begin,Integer pageSize);
 }

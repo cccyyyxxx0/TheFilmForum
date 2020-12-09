@@ -9,5 +9,8 @@
         <module name="FilmForum" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FilmForum" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
