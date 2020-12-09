@@ -1,15 +1,15 @@
-package com.filmForum.dao;
+package com.filmForum.service;
 
 import com.filmForum.entity.Movie;
 
 import java.util.List;
 
 /**
- * 作者：cyx
- * 日期: 2020/12/8 19:07
+ * 作者：wz
+ * 日期: 2020/12/9 10:03
  * 描述:
  */
-public interface MovieDao {
+public interface MovieService {
     int insert(Movie movie);
 
     int deleteById(Integer id);

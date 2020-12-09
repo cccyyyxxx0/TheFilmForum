@@ -35,7 +35,7 @@ public class FileUtils {
             for (FileItem fileItem :
                     list) {
                 //上传的文件
-                StringBuilder sb = new StringBuilder("E:\\dongfangruizhi\\ch1120\\msgsys\\img\\");
+                StringBuilder sb = new StringBuilder("D:\\upload\\");
                 fileName.append(new Date().getTime());
                 fileName.append(fileItem.getName());
                 sb.append(fileName);
