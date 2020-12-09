@@ -16,6 +16,8 @@ import java.io.IOException;
  */
 @WebServlet("/user.do")
 public class UserServlet extends BaseServlet {
+    UserService userService=new UserServiceImpl();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request,response);
     }
@@ -27,5 +29,30 @@ public class UserServlet extends BaseServlet {
         System.out.println("updateupdateupdate");
         FileUtils.singleUpload(request, response);
         response.sendRedirect(request.getContextPath() + "/html/index.html");
+
+    }
+
+    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String username =request.getParameter("username");
+        String password=request.getParameter("password");
+//        String code=request.getParameter("code");
+//        String token=(String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+//        if (token!=null&&token.equalsIgnoreCase(code)){
+            User user =userService.queryUserByUsernameAndPassword(new User(username,password));
+            if (user!=null){
+                HttpSession session=request.getSession();
+                session.setAttribute("user",user);
+                response.getWriter().write("true");
+                request.getRequestDispatcher("").forward(request,response);
+
+                //System.out.println(request.getRequestDispatcher("/message.do?action=queryList"));
+            }else {
+                response.getWriter().write("false");
+            }
+//        }else {
+//
+//        }
+
+
     }
 }
