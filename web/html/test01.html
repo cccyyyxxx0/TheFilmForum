@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="stylesheet">
+        .wrapper{
+            width: 500px;
+            font-size: 14px;
+            border: 1px black solid ;
+        }
+        .wrapper .title{
+            font-weight: bold;
+            font-size: 18px;
+            background-color: aliceblue;
+            padding: 10px;
+        }
+        .wrapper div{
+            padding: 5px;
+            margin: 5px;
+        }
+        .red{
+            color: red;
+        }
+        #preview{
+            height: 150px;
+        }
+    </style>
+    <script type="text/javascript">
+        //上传图片后预览图片
+        function viewImage(file){
+            var patrn = /\.(png|jpg|gif|jpeg|webp)$/;;
+            if(!patrn.test(file.files[0].name)){
+                alert("头像文件格式错误");
+                return false;
+            }
+            var preview = document.getElementById('preview');
+            if(file.files && file.files[0]){
+                //火狐下
+                preview.src = window.URL.createObjectURL(file.files[0]);
+                console.log(window.URL.createObjectURL(file.files[0]));
+            }else{
+                //ie下，使用滤镜
+                file.select();
+                var imgSrc = document.selection.createRange().text;
+                console.log(imgSrc);
+                var localImagId = document.getElementById("localImag");
+                //必须设置初始大小
+                localImagId.style.width = "250px";
+                localImagId.style.height = "200px";
+                try{
+                    localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                    locem("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+                }catch(e){
+                    alert("您上传的图片格式不正确，请重新选择!");
+                    return false;
+                }
+                preview.style.display = 'none';
+                document.selection.empty();
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="title">欢迎注册</div>
+    <div id="localImag">
+        <img id="preview" width=-1 height=-1 style="diplay:none" />
+    </div>
+    <form action="/FilmForum/user.do?action=update" enctype="multipart/form-data" method="post">
+        <div>
+            用户名<span class="red">*</span>
+            <span><input type="text" name="username" id="username"></span>
+        </div>
+        <div>
+            密码<span class="red">*</span>
+            <span><input type="password" name="password" id="password"></span>
+        </div>
+        <div>
+            确认密码<span class="red">*</span>
+            <span><input type="password" name="confirmPass" id="confirmPass"></span>
+        </div>
+        <div>
+            邮箱<span class="red">*</span>
+            <span><input type="text" name="email" id="email"></span>
+        </div>
+        <div class="form-group" id="caseIma">
+            <label class="control-label">切换头像:</label>
+            <label class="btn btn-primary">选择图片
+                <input type="file" style="display: none" class="form-control" id="caseImage" name="img"
+                       onchange="viewImage(this)"/>
+            </label>
+
+        </div>
+        <div>
+            <span><button type="submit">注册</button></span>
+        </div>
+    </form>
+</div>
+</body>
+</html>
