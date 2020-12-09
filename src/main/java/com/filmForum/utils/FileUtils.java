@@ -35,13 +35,17 @@ public class FileUtils {
             for (FileItem fileItem :
                     list) {
                 //上传的文件
-                StringBuilder sb = new StringBuilder("D:\\upload\\");
-                fileName.append(new Date().getTime());
-                fileName.append(fileItem.getName());
-                sb.append(fileName);
-                imagePath = sb.toString();
-                System.out.println(imagePath);
-                fileItem.write(new File(imagePath));
+                if (!fileItem.isFormField()) {
+                    StringBuilder sb = new StringBuilder("D:\\upload\\");
+                    fileName.append(new Date().getTime());
+                    fileName.append(fileItem.getName());
+                    sb.append(fileName);
+                    imagePath = sb.toString();
+
+                    System.out.println(imagePath);
+                    fileItem.write(new File(imagePath));
+                }
+
             }
         } catch (FileUploadException e) {
             e.printStackTrace();
