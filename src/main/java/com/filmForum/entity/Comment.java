@@ -9,30 +9,18 @@ public class Comment {
     private Integer commentId;
     private Integer commentType;
     private Integer movieId;
-    private String commentUser;
+    private String commentUserId;
     private String commentContent;
     private String commentTime;
-
-    @Override
-    public String toString() {
-        return "comment{" +
-                "commentId=" + commentId +
-                ", commentType=" + commentType +
-                ", movieId=" + movieId +
-                ", commentUser='" + commentUser + '\'' +
-                ", commentContent='" + commentContent + '\'' +
-                ", commentTime='" + commentTime + '\'' +
-                '}';
-    }
 
     public Comment() {
     }
 
-    public Comment(Integer commentId, Integer commentType, Integer movieId, String commentUser, String commentContent, String commentTime) {
+    public Comment(Integer commentId, Integer commentType, Integer movieId, String commentUserId, String commentContent, String commentTime) {
         this.commentId = commentId;
         this.commentType = commentType;
         this.movieId = movieId;
-        this.commentUser = commentUser;
+        this.commentUserId = commentUserId;
         this.commentContent = commentContent;
         this.commentTime = commentTime;
     }
@@ -61,12 +49,12 @@ public class Comment {
         this.movieId = movieId;
     }
 
-    public String getCommentUser() {
-        return commentUser;
+    public String getCommentUserId() {
+        return commentUserId;
     }
 
-    public void setCommentUser(String commentUser) {
-        this.commentUser = commentUser;
+    public void setCommentUserId(String commentUserId) {
+        this.commentUserId = commentUserId;
     }
 
     public String getCommentContent() {

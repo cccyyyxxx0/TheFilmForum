@@ -15,34 +15,40 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
     public int insert(Admin admin) {
         String sql = "INSERT INTO `admin`(`title`,`username`,`password`,`addTime`,`lastTime`,`logCount`,`image`) VALUES(?,?,?,?,?,?,?) ";
         return update(sql,admin.getTitle(), admin.getUsername(), admin.getPassword(), admin.getAddTime(),admin.getLastTime(),admin.getLogCount(),  admin.getImage());
-
     }
 
     public int deleteById(Integer id) {
-        return 0;
+        String sql = "DELETE FROM `admin` WHERE `id` = ? ";
+        return update(sql, id);
     }
 
     public int updateById(Admin admin) {
-        return 0;
+        String sql = "UPDATE `admin` SET `title` = ?, `username`=?,`password`=?,`addTime` = ? ,`lastTime` = ? ,`logCount` = ? ,`image` = ?  WHERE `id`= ?";
+        return update(sql,admin.getTitle(), admin.getUsername(), admin.getPassword(), admin.getAddTime(),admin.getLastTime(),admin.getLogCount(), admin.getImage(), admin.getId());
     }
 
     public Admin queryAdminById(Integer id) {
-        return null;
+        String sql = "SELECT * FROM `admin` where `id` = ?";
+        return queryForOne(Admin.class, sql, id);
     }
 
     public List<Admin> queryAll() {
-        return null;
+        String sql = "SELECT * FROM `admin`";
+        return queryForList(Admin.class, sql);
     }
 
     public Integer queryTotalCount() {
-        return null;
+        String sql = "SELECT COUNT(1) FROM `admin`";
+        return (Integer) queryForSingleValue(sql);
     }
 
     public List<Admin> queryAdminByPage(Integer begin, Integer pageSize) {
-        return null;
+        String sql = "SELECT * FROM `admin` LIMIT ?,?";
+        return queryForList(Admin.class, sql, begin, pageSize);
     }
 
     public Admin queryAdminByUsernameAndPassword(Admin admin) {
-        return null;
+        String sql = "SELECT * FROM `admin` WHERE `username` = ? AND `password` = ?";
+        return queryForOne(Admin.class, sql, admin.getUsername(), admin.getPassword());
     }
 }
