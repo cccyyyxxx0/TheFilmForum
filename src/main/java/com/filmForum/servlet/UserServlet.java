@@ -3,21 +3,15 @@ package com.filmForum.servlet;
 import com.filmForum.entity.User;
 import com.filmForum.service.UserService;
 import com.filmForum.service.impl.UserServiceImpl;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import com.filmForum.utils.BaseServlet;
+import com.filmForum.utils.FileUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
-import java.util.List;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
@@ -26,7 +20,8 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
  * 日期: 2020/12/9 10:36
  * 描述:
  */
-public class UserServlet extends BaseServlet{
+@WebServlet("/user.do")
+public class UserServlet extends BaseServlet {
     UserService userService=new UserServiceImpl();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,8 +32,14 @@ public class UserServlet extends BaseServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doGet(request, response);
     }
+    public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("updateupdateupdate");
+        FileUtils.singleUpload(request, response);
+        response.sendRedirect(request.getContextPath() + "/html/index.html");
 
-    public void signup(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
+    }
+
+    public void signup(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         //防止中文乱码
         response.setContentType("text/html;charset=utf-8");
 
@@ -75,5 +76,4 @@ public class UserServlet extends BaseServlet{
 //        }
 
     }
-
 }
