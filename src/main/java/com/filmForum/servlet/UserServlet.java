@@ -1,5 +1,8 @@
 package com.filmForum.servlet;
 
+import com.filmForum.entity.User;
+import com.filmForum.service.UserService;
+import com.filmForum.service.impl.UserServiceImpl;
 import com.filmForum.utils.BaseServlet;
 import com.filmForum.utils.FileUtils;
 
@@ -7,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -26,7 +30,8 @@ public class UserServlet extends BaseServlet {
         super.doGet(request,response);
     }
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("updateupdateupdate");
+        String name = request.getParameter("name");
+        System.out.println(name);
         FileUtils.singleUpload(request, response);
         response.sendRedirect(request.getContextPath() + "/html/index.html");
 
@@ -49,9 +54,7 @@ public class UserServlet extends BaseServlet {
             }else {
                 response.getWriter().write("false");
             }
-//        }else {
-//
-//        }
+
 
 
     }

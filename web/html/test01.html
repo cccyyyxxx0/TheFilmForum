@@ -68,33 +68,42 @@
     <div id="localImag">
         <img id="preview" width=-1 height=-1 style="diplay:none" />
     </div>
-    <form action="/FilmForum/user.do?action=update" enctype="multipart/form-data" method="post">
+    <form action="/FilmForum/movieUpload" enctype="multipart/form-data" method="post">
         <div>
-            用户名<span class="red">*</span>
-            <span><input type="text" name="username" id="username"></span>
+            电影名字<span class="red">*</span>
+            <span><input type="text" name="name" id="name"></span>
         </div>
         <div>
-            密码<span class="red">*</span>
-            <span><input type="password" name="password" id="password"></span>
+            类别<span class="red">*</span>
+            <span><input type="text" name="typeId" id="typeId"></span>
         </div>
         <div>
-            确认密码<span class="red">*</span>
-            <span><input type="password" name="confirmPass" id="confirmPass"></span>
+            上映时间<span class="red">*</span>
+            <span><input type="date" name="showTime" id="showTime"></span>
         </div>
         <div>
-            邮箱<span class="red">*</span>
-            <span><input type="text" name="email" id="email"></span>
+            导演<span class="red">*</span>
+            <span><input type="text" name="director" id="director"></span>
+        </div>
+        <div>
+            主演<span class="red">*</span>
+            <span><input type="text" name="toStar" id="toStar"></span>
         </div>
         <div class="form-group" id="caseIma">
-            <label class="control-label">切换头像:</label>
+            <label class="control-label">图片:</label>
             <label class="btn btn-primary">选择图片
                 <input type="file" style="display: none" class="form-control" id="caseImage" name="img"
                        onchange="viewImage(this)"/>
             </label>
-
         </div>
         <div>
-            <span><button type="submit">注册</button></span>
+            内容<span class="red">*</span>
+            <span>
+            <textarea name="content" id="content" ></textarea>
+            </span>
+        </div>
+        <div>
+            <span><button type="submit">提交</button></span>
         </div>
     </form>
 </div>
