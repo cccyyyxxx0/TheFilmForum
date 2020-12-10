@@ -1,3 +1,4 @@
+<%@ page import="com.filmForum.entity.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,9 +43,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <script src="../static/js/main.js"></script> <!-- Resource jQuery -->
+	<style>
+		.navigation{
+			height: 40px;
+		}
+		.navigation input{
+			border: none;
+			cursor: pointer;
+			position: absolute;
+			outline: none;
+			top: 0px;
+			right: 0px;
+			font-size: 1.3em;
+			background: #00aedb;
+			color: #fff;
+			font-weight: 700;
+			padding: 6px 26px;
+			font-family: 'Roboto Condensed', sans-serif;
+		}
+	</style>
 </head>
 <body>
 <!--header-->
+<%
+	User user =(User) session.getAttribute("user");
+%>
+
 <div class="back">
 	<img src="../static/images/back.png" alt="">
 </div>	
@@ -55,8 +79,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-top">
 				<div class="header-in">
 					<div class="logo">
-						<a href="index.html"><img src="../static/images/logo.png" alt="" ></a>
+						<a href="index.jsp"><img src="../static/images/logo.png" alt="" ></a>
 					</div>
+					<div class="navigation">
+						<input value="当前用户:<%=user.getUsername()%>" style="left:0">
+						<a href="login.html"><input type="button" value="登录/注册"></a>
+					</div>
+					<div>&nbsp;</div>
 					<div class="search">
 						<form>
 							<input type="text" value="" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '';}" >
@@ -66,11 +95,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"> </div>
 				</div>
 				<div class="header-top-on">
-					<ul class="social-in">
-						<li><a href="#"><i> </i></a></li>						
-						<li><a href="#"><i class="facebook"> </i></a></li>
-						<li><a href="#"><i class="tin"> </i></a></li>
-					</ul>
+					<!--<ul class="social-in">-->
+						<!--<li><a href="login.html"><i><font size="3px">登录/注册</font></i></a></li>-->
+						<!--<li><a href="#"><i> </i></a></li>-->
+						<!--<li><a href="#"><i> </i></a></li>-->
+					<!--</ul>-->
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -83,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  </label>
 				  <input id="mobile_menu" type="checkbox">
 					<ul class="nav">
-						<li><a class="color1" href="index.html">首页</a></li>
+						<li><a class="color1" href="index.jsp">首页</a></li>
 						<li><a href="cinema.html" class="color2">电影</a></li>
 						<li><a href="magazine.html" class="color3">杂志</a></li>
 						<li class="dropdown"><a href="#" class="color4">顶部菜单栏<span> </span></a>

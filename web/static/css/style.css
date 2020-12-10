@@ -41,31 +41,33 @@ h1,h2,h3,h4,h5,h6,label,p{
 	margin-top: 0.7em;
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
-ul.social-in li{
-	display: inline-block;	
-}
-ul.social-in li  i{
-	background: url(../images/img-sprite.png)no-repeat -19px -16px;
-	width: 43px;
-	height: 43px;
-	display: inline-block;
-	vertical-align: middle;
-}
-ul.social-in li  i.tin{
-	background-position:-250px -16px;
-}
-ul.social-in li  i.facebook{
-	background-position:-136px -16px;
-}
-ul.social-in li  i:hover{
-	background-position: -78px -16px;
-}
-ul.social-in li  i.tin:hover{
-	background-position:-306px -16px;
-}
-ul.social-in li  i.facebook:hover{
-	background-position:-192px -16px;
-}
+/*ul.social-in li{*/
+	/*display: inline-block;	*/
+/*}*/
+/*ul.social-in li  i{*/
+	/*!*background: url(../images/img-sprite.png)no-repeat -19px -16px;*!*/
+	/*background-color: #1B242F;*/
+	/*width: 80px;*/
+	/*height: 38px;*/
+	/*display: inline-block;*/
+	/*vertical-align: middle;*/
+
+/*}*/
+/*ul.social-in li  i.tin{*/
+	/*background-position:-250px -16px;*/
+/*}*/
+/*ul.social-in li  i.facebook{*/
+	/*background-position:-136px -16px;*/
+/*}*/
+/*ul.social-in li  i:hover{*/
+	/*background-position: -78px -16px;*/
+/*}*/
+/*ul.social-in li  i.tin:hover{*/
+	/*background-position:-306px -16px;*/
+/*}*/
+/*ul.social-in li  i.facebook:hover{*/
+	/*background-position:-192px -16px;*/
+/*}*/
 .search{
 	float:right;
 	position:relative;

@@ -36,7 +36,7 @@ public class UserServlet extends BaseServlet {
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("updateupdateupdate");
         FileUtils.singleUpload(request, response);
-        response.sendRedirect(request.getContextPath() + "/html/index.html");
+        response.sendRedirect(request.getContextPath() + "/html/index.jsp");
 
     }
 
@@ -77,7 +77,7 @@ public class UserServlet extends BaseServlet {
                 HttpSession session=request.getSession();
                 session.setAttribute("user",user);
                 response.getWriter().write("true");
-                request.getRequestDispatcher("").forward(request,response);
+                request.getRequestDispatcher("html/index.jsp").forward(request,response);
             }else {
                 response.getWriter().write("false");
             }
