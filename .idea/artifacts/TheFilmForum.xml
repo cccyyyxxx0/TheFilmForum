@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="FilmForum">
-    <output-path>$PROJECT_DIR$/classes/artifacts/FilmForum</output-path>
+  <artifact type="exploded-war" name="TheFilmForum">
+    <output-path>$PROJECT_DIR$/classes/artifacts/TheFilmForum</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="FilmForum" />
+          <element id="module-output" name="TheFilmForum" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
