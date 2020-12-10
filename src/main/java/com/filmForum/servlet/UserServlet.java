@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
@@ -48,12 +49,17 @@ public class UserServlet extends BaseServlet {
         String repassword=request.getParameter("repassword");
         String email=request.getParameter("email");
         String phone=request.getParameter("phone");
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String regTime = tempDate.format(new java.util.Date());
+
         User user=new User();
         if (password.equals(repassword)){
             user.setUsername(username);
             user.setPassword(password);
             user.setEmail(email);
             user.setPhone(phone);
+            user.setRegTime(regTime);
+            user.setLoginCount(0);
         }
         int result=userService.insert(user);
 
@@ -63,23 +69,19 @@ public class UserServlet extends BaseServlet {
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username =request.getParameter("username");
         String password=request.getParameter("password");
-//        String code=request.getParameter("code");
-//        String token=(String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
-//        if (token!=null&&token.equalsIgnoreCase(code)){
+
             User user =userService.queryUserByUsernameAndPassword(new User(username,password));
             if (user!=null){
+                user.setLoginCount(user.getLoginCount()+1);
+                userService.updateLoginCount(user);
                 HttpSession session=request.getSession();
                 session.setAttribute("user",user);
                 response.getWriter().write("true");
                 request.getRequestDispatcher("").forward(request,response);
-
-                //System.out.println(request.getRequestDispatcher("/message.do?action=queryList"));
             }else {
                 response.getWriter().write("false");
             }
-//        }else {
-//
-//        }
+
 
     }
 

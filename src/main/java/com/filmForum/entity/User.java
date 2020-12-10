@@ -14,7 +14,7 @@ public class User {
     private String email;//电子邮箱
     private String sex;//性别
     private String regTime;//注册时间
-    private String loginCount;//  登录次数
+    private Integer loginCount;//  登录次数
     private String image;//头像
 
     @Override
@@ -112,11 +112,11 @@ public class User {
         this.regTime = regTime;
     }
 
-    public String getLoginCount() {
+    public Integer getLoginCount() {
         return loginCount;
     }
 
-    public void setLoginCount(String loginCount) {
+    public void setLoginCount(Integer loginCount) {
         this.loginCount = loginCount;
     }
 
@@ -127,4 +127,6 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
+
+
 }

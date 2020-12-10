@@ -16,6 +16,8 @@ public interface UserService {
 
     int updateById(User user);
 
+    int updateLoginCount(User user);
+
     User queryUserById(Integer id);
 
     List<User> queryAll();

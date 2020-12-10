@@ -24,9 +24,15 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     public int updateById(User user) {
-        String sql = "UPDATE `user` SET `username`=?,`password`=?,`phone` = ? ,`QQ` = ? ,`email` = ? ,`sex` = ? ,`regTime` = ? ,`loginCount` = ? ,`image` = ?  WHERE `id`= ?";
-        return update(sql, user.getUsername(), user.getPassword(), user.getPhone(), user.getQQ(), user.getEmail(), user.getSex(), user.getRegTime(), user.getLoginCount(), user.getImage(), user.getId());
+        String sql = "UPDATE `user` SET `username`=?,`password`=?,`phone` = ? ,`QQ` = ? ,`email` = ? ,`sex` = ? ,`regTime` = ? ,`image` = ?  WHERE `id`= ?";
+        return update(sql, user.getUsername(), user.getPassword(), user.getPhone(), user.getQQ(), user.getEmail(), user.getSex(), user.getRegTime(), user.getImage(), user.getId());
 
+    }
+
+    @Override
+    public int updateLoginCount(User user) {
+        String sql="UPDATE `user` SET `loginCount` = ? WHERE `id`= ? ";
+        return update(sql,user.getLoginCount(),user.getId());
     }
 
     public User queryUserById(Integer id) {

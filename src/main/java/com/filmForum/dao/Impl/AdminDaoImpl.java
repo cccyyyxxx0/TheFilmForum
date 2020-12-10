@@ -23,9 +23,16 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
     }
 
     public int updateById(Admin admin) {
-        String sql = "UPDATE `admin` SET `title` = ?, `username`=?,`password`=?,`addTime` = ? ,`lastTime` = ? ,`logCount` = ? ,`image` = ?  WHERE `id`= ?";
-        return update(sql,admin.getTitle(), admin.getUsername(), admin.getPassword(), admin.getAddTime(),admin.getLastTime(),admin.getLogCount(), admin.getImage(), admin.getId());
+        String sql = "UPDATE `admin` SET `title` = ?, `username`=?,`password`=?,`addTime` = ? ,`image` = ?  WHERE `id`= ?";
+        return update(sql,admin.getTitle(), admin.getUsername(), admin.getPassword(), admin.getAddTime(), admin.getImage(), admin.getId());
     }
+
+    @Override
+    public int updateLoginCountAndLastTime(Admin admin) {
+        String sql = "UPDATE `admin` SET `lastTime` = ? ,`logCount`=? WHERE `id`= ?";
+        return update(sql,admin.getLastTime(),admin.getLogCount(),admin.getId());
+    }
+
 
     public Admin queryAdminById(Integer id) {
         String sql = "SELECT * FROM `admin` where `id` = ?";

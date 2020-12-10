@@ -17,6 +17,8 @@ public interface AdminDao {
 
     int updateById(Admin admin);
 
+    int updateLoginCountAndLastTime(Admin admin);
+
     Admin queryAdminById(Integer id);
 
     List<Admin> queryAll();

@@ -30,6 +30,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public int updateLoginCountAndLastTime(Admin admin) {
+        return adminDao.updateLoginCountAndLastTime(admin);
+    }
+
+    @Override
     public Admin queryAdminById(Integer id) {
         return adminDao.queryAdminById(id);
     }

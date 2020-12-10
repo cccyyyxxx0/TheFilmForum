@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int updateLoginCount(User user) {
+        return userDao.updateLoginCount(user);
+    }
+
+    @Override
     public User queryUserById(Integer id) {
         return userDao.queryUserById(id);
     }
